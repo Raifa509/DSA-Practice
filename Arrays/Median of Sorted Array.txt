@@ -12,4 +12,7 @@ var findMedianSortedArrays = function(nums1, nums2) {
             let mid2=merged[len/2];
             return (mid1+mid2)/2 ;
         }
+
+
+
 };
