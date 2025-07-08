@@ -1,0 +1,39 @@
+var fourSum = function(nums, target) {
+    if(nums.length==0) return [];
+
+    let arr=[];
+    nums=nums.sort((a,b)=>a-b);
+    for(let i=0;i<nums.length-3;i++)
+    {
+        if(i>0 && nums[i]===nums[i-1]) continue;
+        for(let j=i+1;j<nums.length-2;j++)
+        {
+            if(j>i+1 && nums[j]===nums[j-1]) continue;
+
+            let k=j+1;
+            let l=nums.length-1;
+
+            while(k<l)
+            {
+                let sum=nums[i]+nums[j]+nums[k]+nums[l];
+                
+                if(sum==target)
+                {
+                    arr.push([nums[i],nums[j],nums[k],nums[l]]);
+                    while(nums[k]===nums[k+1]) k++;
+                    while(nums[l]===nums[l-1]) l--;
+                    k++;
+                    l--;
+                }
+                else if(sum>target)
+                {
+                    l--;
+                }
+                else{
+                    k++;
+                }
+            }
+        }
+    }
+    return arr;
+};
